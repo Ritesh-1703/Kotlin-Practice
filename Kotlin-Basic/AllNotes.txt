@@ -1,0 +1,265 @@
+Variables:-
+............ 
+
+val vs var:- 
+val → Immutable variable (read-only after initialization). Like final in Java.
+var → Mutable variable (can be reassigned).
+
+val city = "Pune"
+    city = "Mumbai"  ->  Error: val cannot be reassigned
+
+-Immutable reference: The reference cannot be changed
+
+-Runtime safety: Thread-safe by default
+
+-Readability: Clearly indicates the value won't change
+
+-Best Practice: Use val by default, only use var when necessary
+
+
+var count = 10
+    count = 15 ->     Works fine
+When to Use var:
+-   Loop counters
+- State that genuinely needs to change
+- Builder pattern implementations
+- When computing intermediate results
+
+- val variables must be initialized at declaration or in the constructor (if inside class).
+- var can be declared without initialization if marked lateinit (for non-null types in classes).
+- Use val by default → immutability is safer and avoids bugs.
+
+- val is not fully immutable if it points to a mutable object
+val list = mutableListOf(1, 2, 3)
+list.add(4) -> Works! List object is mutable
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Data Types:- 
+............
+
+| Type      | Description                   | Example     |
+| --------- | ----------------------------- | ----------- |
+| `Int`     | Integer numbers               | 10, -5      |
+| `Double`  | Floating point numbers        | 3.14, -0.5  |
+| `Float`   | Less precise floating numbers | 2.5f        |
+| `Long`    | Larger integers               | 1234567890L |
+| `Boolean` | True/False                    | true, false |
+| `Char`    | Single character              | 'A'         |
+| `String`  | Text                          | "Hello"     |
+
+val x = 10 -> Kotlin automatically infers Int
+val y = 5.5 ->  Double inferred
+
+Conversion Between Types:- 
+val i: Int = 10
+val d: Double = i.toDouble() -> Explicit conversion
+
+- Kotlin does not do implicit widening like Java. You must convert explicitly.
+- Use Any for a variable that can hold any type.
+
+Root Hierarchy:-
+Any (root)
+├── Any? (nullable root)
+├── Number
+│   ├── Byte, Short, Int, Long
+│   ├── Float, Double
+├── Char
+├── Boolean
+├── String
+└── Collections...
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Conditional Statments:- 
+......................
+
+if:- 
+.....
+
+- Basic if Statement
+if (condition) {
+     code executes if condition is true
+} else {
+     code executes if condition is false
+}
+
+-if as an Expression
+-if with Multiple Conditions (Else If)
+-Single-Line if
+-Nested if
+
+
+when:- 
+.......
+
+-Basic when
+when (value) {
+    case1 ->  code
+    case2 ->  code
+    else -> default code
+}
+
+-when as an Expression
+-Multiple Conditions in a Single Branch
+-when without an Argument
+-Checking Data Types in when
+-Using when for Smart Casting
+-Replacing complex if-else chains:
+when is more readable for multiple conditions than nested ifs.
+
+| Feature                     | `if`        | `when`                |
+| --------------------------- | ----------- | --------------------- |
+| Basic conditional           | ✅           | ✅                     |
+| Multiple conditions         | ✅ (else if) | ✅ (multiple branches) |
+| Return value                | ✅           | ✅                     |
+| Range checking              | ❌           | ✅ (`in` / `!in`)      |
+| Type checking               | ❌           | ✅ (`is`)              |
+| Replacement for switch-case | ❌           | ✅                     |
+| No argument usage           | ❌           | ✅                     |
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Loops:- 
+.......
+
+A loop is used to repeat a block of code multiple times until a condition is met.
+In Kotlin, main loops are:
+1. for
+2. while
+3. do-while
+
+1. for:- 
+.........
+
+- Basic for Loop with Range => for (i in 1..5)
+- until (excluding last value) =>  for (i in 1 until 5)
+- downTo (reverse loop) =>  for (i in 5 downTo 1)
+- step (skip values) => for (i in 1..10 step 2)
+- Loop through Array
+- Loop with Index
+- withIndex()
+
+2. while:- 
+...........
+
+- Basic while => Used when number of iterations is not fixed
+
+3. do-while Loop:- 
+..................
+Example:- 
+var i = 10
+do {
+    println(i)
+    i++
+} while (i < 5)
+
+
+-- break and continue
+-- Nested Loops
+-- Labeled Loops @
+-- Loop with repeat()-> repeat(5){}
+-- forEach
+-- forEachIndexed
+-- Loop Control with return
+
+| Feature            | for                 | while      | do-while       |
+| ------------------ | ------------------- | ---------- | -------------- |
+| Entry control      | Yes                 | Yes        | No             |
+| Runs at least once | ❌                   | ❌          | ✅              |
+| Best for           | Ranges, collections | Conditions | Menus, retries |
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Functions:- 
+............
+
+- Basic Function Syntax
+fun functionName() {
+    // code
+}
+
+- Function with Parameters
+fun greetUser(name: String){
+
+}
+- Function with Return Type
+fun add(a: Int, b: Int): Int {
+
+}
+- Single Expression Function
+fun multiply(a: Int, b: Int): Int = a * b
+
+- Default Parameters
+fun greet(name: String = "Guest") {
+    println("Hello, $name")
+}
+
+- Named Arguments
+fun userInfo(name: String, age: Int) {
+    println("Name: $name, Age: $age")
+}
+
+- Function with Nullable Parameters
+fun printLength(text: String?) {
+    println(text?.length ?: "No text")
+}
+
+- Functions with Unit Return (Void)
+ . Unit is optional:
+fun showMessage(): Unit {
+    println("Welcome")
+}
+
+- Local Functions (Function inside function)
+fun outerFunction() {
+    fun innerFunction() {
+        println("Inner Function")
+    }
+    innerFunction()
+}
+
+- Vararg (Variable Arguments)
+fun sum(vararg numbers: Int): Int {
+    var total = 0
+    for (n in numbers) {
+        total += n
+    }
+    return total
+}
+
+- Recursion (Function calling itself)
+fun factorial(n: Int): Int {
+    return if (n == 1) 1 else n * factorial(n - 1)
+}
+
+- Inline Functions
+inline fun show(block: () -> Unit) {
+    block()
+}
+
+- Lambda Functions
+val add: (Int, Int) -> Int = { a, b -> a + b }
+
+- Higher Order Functions
+- Function that takes another function as parameter.
+fun calculate(a: Int, b: Int, operation: (Int, Int) -> Int): Int {
+    return operation(a, b)
+}
+
+- Extension Functions
+- Add function to existing class.
+fun String.reverseText(): String {
+    return this.reversed()
+}
+
+- Infix Functions
+infix fun Int.add(other: Int): Int {
+    return this + other
+}
+
+- Tail Recursion
+- Optimized recursion
+tailrec fun factorial(n: Int, result: Int = 1): Int {
+    return if (n == 1) result else factorial(n - 1, result * n)
+}
