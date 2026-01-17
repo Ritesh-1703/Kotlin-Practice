@@ -1,0 +1,255 @@
+                            OPPs in Kotlin:-
+                            :::::::::::::::
+
+
+Class and Object: -
+....................
+
+- A class is a blueprint from which objects are created.
+- Example:
+Class → Student
+Object → Ritesh, Rahul
+
+- Object declaration creates a SINGLE instance of a class.
+- Only one object exists in the whole program.
+- This is called Singleton Pattern.
+class Person {
+    var name: String = ""
+    var age: Int = 0
+}
+
+val p = Person()
+    p.name = "Ritesh"
+    p.age = 22
+    println(p.name)
+    println(p.age)
+
+- Object Expression (Anonymous Object)
+- Meaning
+- Object expression creates an object WITHOUT class name
+- Used for one-time use.
+- Syntax:- 
+val obj = object {
+    val name = "Ritesh"
+    fun greet() {
+        println("Hello $name")
+    }
+}
+
+-- Companion Object (Static Equivalent)
+- Companion object is used to create static-like members in Kotlin
+- Because Kotlin does not have static keyword.
+
+Syntax:- 
+class Utils {
+    companion object {
+        fun greet() {
+            println("Hello")
+        }
+    }
+}
+
+| Feature     | Object Declaration | Object Expression | Companion Object |
+| ----------- | ------------------ | ----------------- | ---------------- |
+| Instances   | One (Singleton)    | New every time    | One per class    |
+| Class Name  | Required           | ❌ No              | Inside class    |
+| Static-like | ✅                 | ❌                 | ✅            |
+| Use Case    | Global instance    | One-time use      | Static members   |
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Constructor: -
+................
+
+- In Kotlin, a constructor is used to initialize an object when a class is    created.
+- Kotlin has two types of constructors:
+- Primary Constructor
+- Syntax 
+  class ClassName(parameter1: Type, parameter2: Type)
+
+- Secondary Constructor:- 
+- Secondary constructors are defined using the constructor keyword.
+class Student {
+    var name: String
+    var age: Int
+    constructor(name: String, age: Int) {
+        this.name = name
+        this.age = age
+    }
+}
+
+- Default Constructor:- 
+- If no constructor is written, Kotlin creates a default constructor.
+class College
+fun main() {
+    val c = College()
+}
+
+- Private Constructor:- 
+- Used in Singleton or Factory Pattern
+class Database private constructor() {
+    companion object {
+        val instance = Database()
+    }
+}
+
+| Feature               | Kotlin                     |
+| --------------------- | -------------------------- |
+| Primary Constructor   | In class header            |
+| Secondary Constructor | Uses `constructor` keyword |
+| `init` block          | Executes automatically     |
+| Multiple constructors | Yes                        |
+| Default values        | Supported                  |
+| No `new` keyword      | Object created directly    |
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Inheritance:- 
+..............
+
+- Inheritance is an Object-Oriented Programming (OOP) concept where one class (child / subclass) acquires the properties and methods of another class (parent / superclass).
+
+- Code Reusability
+- Better Structure
+- Easy Maintenance
+- Supports Polymorphism
+
+- Important Rule in Kotlin:- 
+- By default, classes in Kotlin are final
+- To allow inheritance, the parent class must be marked as open
+
+Basic Syntax of Inheritance:- 
+open class Parent {
+    // properties & methods
+}
+class Child : Parent() {
+    // child class code
+}
+
+- Method Overriding in Inheritance:- 
+- When a child class changes the behavior of a parent method.
+- Rules:
+- Parent method must be open
+- Child method must use override
+- Use final to stop overriding
+
+- Using super Keyword:- 
+- super is used to call parent class members.
+
+- Inheritance with Constructors
+- Inheritance & Properties
+
+- Types of Inheritance in Kotlin:- 
+| Type                             | Supported |
+| -------------------------------- | --------- |
+| Single Inheritance               | ✅ Yes     |
+| Multilevel Inheritance           | ✅ Yes     |
+| Hierarchical Inheritance         | ✅ Yes     |
+| Multiple Inheritance (Class)     | ❌ No      |
+| Multiple Inheritance (Interface) | ✅ Yes     |
+
+- open, override, final Keywords:- 
+| Keyword  | Purpose                |
+| -------- | ---------------------- |
+| open     | Allows inheritance     |
+| override | Modifies parent method |
+| final    | Prevents overriding    |
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Interface:- 
+..............
+
+- An interface in Kotlin is a blueprint of a class.
+- It defines what a class must do, but not how it does it.
+- Supports multiple inheritance
+- Used for 100% abstraction (partially, because it can have default methods)
+- Achieve abstraction
+- Support multiple inheritance
+- Loose coupling
+- Code flexibility
+- Used in real projects (APIs, callbacks, services)
+- Syntax:- 
+interface InterfaceName {
+    fun methodName()
+}
+
+- Interface with Properties
+- Interface properties are abstract by default
+
+- Interface with Default Method (Concrete Method)
+- Multiple Interface Implementation
+- Conflict in Multiple Interfaces
+If two interfaces have same method name, conflict occurs.
+- Interface with Inheritance
+
+
+- Interface vs Abstract Class
+
+| Interface                    | Abstract Class     |
+| ---------------------------- | ------------------ |
+| Multiple inheritance allowed | Single inheritance |
+| No constructor               | Has constructor    |
+| Properties are abstract      | Can have state     |
+| Uses `implements`            | Uses `extends`     |
+| Lightweight                  | Heavy              |
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Abstract Class:- 
+..................
+- An abstract class is a partially implemented class.
+- It contains:
+- Abstract methods (no body)
+- Concrete methods (with body)
+- Properties
+- Constructors
+- Cannot create an object of an abstract class
+- Must be inherited
+
+- Why Use Abstract Class?
+- To achieve partial abstraction
+- To share common code
+- To enforce rules on child classes
+- Used when base logic is common
+-Syntax 
+abstract class ClassName {
+    abstract fun methodName()
+    fun concreteMethod() {
+        println("Normal method")
+    }
+}
+
+- Abstract Method Rules:- 
+
+| Rule                 | Explanation          |
+| -------------------- | -------------------- |
+| Abstract method      | No body              |
+| Must be overridden   | In child class       |
+| Cannot be `private`  | Must be visible      |
+| Child must implement | All abstract methods |
+
+- Constructor in Abstract Class:-
+- Abstract classes can have constructors
+
+- Abstract Class vs Interface
+
+| Abstract Class      | Interface            |
+| ------------------- | -------------------- |
+| Partial abstraction | Full abstraction     |
+| Has constructor     | No constructor       |
+| Single inheritance  | Multiple inheritance |
+| Has state           | No state             |
+
+- Abstract Class vs Inheritance:- 
+
+| Inheritance                | Abstract Class          |
+| -------------------------- | ----------------------- |
+| IS-A relationship          | Base template           |
+| May or may not be abstract | Always abstract         |
+| No rule enforcement        | Enforces implementation |
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
