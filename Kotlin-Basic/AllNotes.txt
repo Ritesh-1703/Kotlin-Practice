@@ -263,3 +263,81 @@ infix fun Int.add(other: Int): Int {
 tailrec fun factorial(n: Int, result: Int = 1): Int {
     return if (n == 1) result else factorial(n - 1, result * n)
 }
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Null Safty:- 
+............
+
+- Non-Nullable Variable (Default)
+var name: String = "Ritesh"
+// name = null ❌ ERROR
+
+- Nullable Variable (?)
+- To allow null, use ?
+var name: String? = "Ritesh"
+name = null  // ✅ Allowed
+
+- Elvis Operator ?:
+- Used to give default value if null
+
+var name: String? = null
+val length = name?.length ?: 0
+println(length)
+
+- Not-Null Assertion !!
+
+var name: String? = null
+println(name!!.length)  //  CRASH
+
+- !! means:
+- "I am 100% sure this is NOT null"
+- If it is null → app crashes
+- ⚠️ Rule:
+- Avoid !! in real projects
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Data Class:- 
+............
+
+- A data class is a class whose main purpose is to hold data.
+- Instead of writing a lot of boilerplate code, Kotlin does it automatically
+
+- Normal Class:- 
+class Student(val name: String, val age: Int)
+
+-Data Class:- 
+data class Student(val name: String, val age: Int)
+Kotlin automatically generates:
+✔ toString()
+✔ equals()
+✔ hashCode()
+✔ copy()
+✔ componentN()
+
+- copy() Function:- 
+
+val original = User(1, "Ritesh")
+val copied = original.copy(name = "Rahul")
+
+println(original)
+println(copied)
+- Used heavily in Android, immutability, MVVM
+
+- componentN() & Destructuring:- 
+val user = User(1, "Ritesh")
+
+val (id, name) = user
+println(id)
+println(name)
+
+- Behind the scenes:
+component1() → id
+component2() → name
+
+- Data Class Rules:-
+- Must use data keyword
+- Primary constructor must have at least ONE parameter
+- All primary constructor parameters must be val or var
+- Data class cannot be abstract, open, sealed, or inner 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
