@@ -1,0 +1,488 @@
+Advanced Kotlin
+................................................
+
+lateinit:- 
+..........
+- lateinit is a modifier in Kotlin used with non-nullable var properties that cannot be initialized at the time of declaration, but will be initialized later before use.
+👉 It helps avoid null values and null checks (?, !!).
+
+In Kotlin:
+- Non-nullable variables must be initialized immediately
+- But sometimes initialization happens later, e.g.:
+- Dependency Injection
+- Android lifecycle methods (onCreate)
+- Unit testing
+- Framework-controlled initialization (Spring, JPA)
+- Syntax of lateinit:- 
+lateinit var variableName: DataType
+- Example:- 
+lateinit var userName: String
+
+Rules of lateinit:- 
+| Rule               | Explanation                        |
+| ------------------ | ---------------------------------- |
+| `var` only         | ❌ Cannot be `val`                  |
+| Non-nullable types | ❌ Cannot be `String?`              |
+| Class properties   | ❌ Not allowed for local variables  |
+| Reference types    | Allowed (String, Objects, Classes) |
+
+Cannot be used with:
+| Not Allowed     | Reason                           |
+| --------------- | -------------------------------- |
+| `val`           | Needs reassignment               |
+| Primitive types | `Int`, `Double`, `Boolean`, etc. |
+| Nullable types  | `String?`                        |
+| Local variables | Only class-level                 |
+
+- Checking Initialization Using ::variable.isInitialized
+- Kotlin provides a way to check whether a lateinit variable is initialized or not.
+- Syntax
+if (::variableName.isInitialized) {
+    // safe to use
+}
+- Example
+lateinit var course: String
+
+fun main() {
+    if (::course.isInitialized) {
+        println(course)
+    } else {
+        println("Course not initialized")
+    }
+}
+
+- lateinit vs Nullable (?)
+| Feature         | `lateinit`               | Nullable (`?`) |
+| --------------- | ------------------------ | -------------- |
+| Null safety     | Non-nullable             | Nullable       |
+| Null checks     | Not required             | Required       |
+| Runtime risk    | Yes (if not initialized) | Less           |
+| Clean code      | Cleaner                  | More checks    |
+| Recommended for | DI, lifecycle            | Optional data  |
+
+- lateinit vs lazy:- 
+| Feature        | `lateinit`  | `lazy`            |
+| -------------- | ----------- | ----------------- |
+| Variable type  | `var`       | `val`             |
+| Initialization | Manual      | Automatic         |
+| Thread-safe    | ❌ No       | ✅ Yes             |
+| Use case       | Android, DI | Heavy computation |
+
+Advantages of lateinit:- 
+✅ Avoids null values
+✅ Cleaner and readable code
+✅ Useful in lifecycle-based initialization
+✅ Avoids excessive ? and !!
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+lazy:- 
+........
+
+lazy is a standard Kotlin function used to initialize a variable only when it is used for the first time.
+👉 This is called lazy initialization.
+The value is not created at declaration
+It is created only on first access
+After that, the same value is reused
+
+Sometimes:
+Object creation is heavy
+Value may never be used
+You want better performance
+Using lazy:
+✔ Saves memory
+✔ Improves performance
+✔ Ensures single initialization
+
+Syntax of lazy:- 
+val variableName by lazy {
+    initialization code
+}
+
+Example:- 
+val message by lazy {
+    "Hello Kotlin"
+}
+
+Key Characteristics of lazy:- 
+| Feature           | Description     |
+| ----------------- | --------------- |
+| Keyword           | `by lazy`       |
+| Works with        | `val` only      |
+| Initialization    | On first access |
+| Thread safety     | Yes (default)   |
+| Re-initialization | ❌ No            |
+| Null allowed      | Yes             |
+
+- Thread Safety Modes of lazy:- 
+Kotlin provides 3 modes for lazy.
+1️⃣ SYNCHRONIZED (Default):- 
+val value by lazy {
+    "Thread Safe"
+}
+✔ Thread-safe
+❌ Slight performance overhead
+
+2️⃣ PUBLICATION
+val value by lazy(LazyThreadSafetyMode.PUBLICATION) {
+    "Multiple threads allowed"
+}
+Faster
+⚠ Multiple threads may initialize
+✔ Only one value is used
+
+3️⃣ NONE
+val value by lazy(LazyThreadSafetyMode.NONE) {
+    "Not thread safe"
+}
+✔ Fastest
+❌ Not thread-safe
+✔ Use when single-threaded
+
+Comparison Table: lateinit vs lazy:- 
+
+| Feature          | `lazy`        | `lateinit`     |
+| ---------------- | ------------- | -------------- |
+| Keyword          | `by lazy`     | `lateinit`     |
+| Variable type    | `val`         | `var`          |
+| Initialization   | Automatic     | Manual         |
+| Thread safety    | Yes           | No             |
+| Reassign allowed | ❌ No          | ✅ Yes          |
+| Use case         | Heavy objects | Lifecycle init |
+
+- lazy with Nullable Values:- 
+val user: String? by lazy {
+    null
+}
+✔ Allowed
+✔ No runtime exception
+
+Advantages of lazy:-
+✅ Improves performance
+✅ Thread-safe by default
+✅ Clean and readable code
+✅ Avoids unnecessary object creation
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+companion object:- 
+....................
+
+- A companion object in Kotlin is used to define members (variables and functions) that belong to a class itself, not to its objects.
+👉 It is Kotlin’s way of creating static members (like static in Java).
+- Kotlin does not have the static keyword.
+So, to:
+Share data across all objects
+Access members using class name
+Create factory methods
+Define constants
+👉 We use companion object
+
+- Syntax
+class ClassName {
+    companion object {
+        // variables and functions
+    }
+}
+
+Key Characteristics:- 
+| Feature                  | Description          |
+| ------------------------ | -------------------- |
+| Belongs to               | Class                |
+| Object instances         | Single (singleton)   |
+| Accessed using           | Class name           |
+| Similar to               | Java `static`        |
+| Can access class members | ❌ No (unless passed) |
+
+Named Companion Object:- 
+You can name a companion object.
+class MathUtils {
+    companion object Calculator {
+        fun square(x: Int) = x * x
+    }
+}
+
+| Feature            | Companion Object | Object      |
+| ------------------ | ---------------- | ----------- |
+| Inside class       | ✅ Yes            | ❌ No        |
+| Multiple per class | ❌ Only one       | ❌           |
+| Access to class    | Tight coupling   | Independent |
+
+When to Use Companion Object:- 
+✅ Utility functions
+✅ Constants
+✅ Factory methods
+✅ Shared variables
+✅ Static-like behavior
+
+When NOT to Use:- 
+❌ For instance-specific data
+❌ When object declaration is better
+❌ For mutable global state (bad practice)
+
+Advantages:- 
+✔ Cleaner than static
+✔ Object-oriented
+✔ Supports interfaces
+✔ Better interoperability with Java
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+object Keyword:- 
+.................
+
+In Kotlin, the object keyword is used to:
+Create a singleton object
+Create an anonymous object
+Define a companion object
+👉 It allows creating a class and its instance at the same time.
+
+Uses of object Keyword
+| Use Case           | Description         |
+| ------------------ | ------------------- |
+| Object Declaration | Singleton           |
+| Object Expression  | Anonymous object    |
+| Companion Object   | Static-like members |
+
+Object Declaration (Singleton)
+What is Singleton?
+A singleton means only one instance exists in the entire program.
+
+Syntax
+object ObjectName {
+    // variables and functions
+}
+Example
+object Database {
+    val name = "MyDB"
+
+    fun connect() {
+        println("Connected to $name")
+    }
+}
+Access
+fun main() {
+    Database.connect()
+}
+✔ Only one instance
+✔ Thread-safe by default
+✔ No constructor
+
+Object Expression (Anonymous Object): -
+- Used to create an object without a class name, similar to anonymous inner classes in Java.
+Syntax
+val obj = object {
+    val x = 10
+    fun show() {
+        println(x)
+    }
+}
+
+Object vs Class:- 
+| Feature     | object                | class     |
+| ----------- | --------------------- | --------- |
+| Instances   | Only one              | Many      |
+| Constructor | ❌ No                  | ✅ Yes     |
+| Inheritance | ❌ Cannot be inherited | ✅         |
+| Thread-safe | ✅ Yes                 | ❌ Depends |
+
+Object vs Companion Object:- 
+| Feature  | Object            | Companion Object    |
+| -------- | ----------------- | ------------------- |
+| Location | Top-level         | Inside class        |
+| Access   | ObjectName.member | ClassName.member    |
+| Purpose  | Singleton         | Static-like members |
+
+When to Use object:- 
+✅ Logging utilities
+✅ Database connections
+✅ Configuration
+✅ Network clients
+✅ Constants holder
+
+When NOT to Use object:- 
+❌ If multiple instances are needed
+❌ If object needs constructor parameters
+❌ If inheritance is required
+
+Advantages:- 
+✔ Simple singleton creation
+✔ Thread-safe
+✔ No memory overhead of multiple objects
+✔ Clean syntax
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+sealed Class:- 
+..............
+
+- A sealed class in Kotlin is a special type of class that restricts which classes can inherit from it.
+👉 All subclasses of a sealed class must be known at compile time.
+This makes code::- 
+Safer
+More readable
+Easier to handle with when
+
+Syntax of sealed class:- 
+sealed class ClassName {
+    class Child1 : ClassName()
+    class Child2 : ClassName()
+}
+
+Example
+sealed class NetworkState {
+    object Loading : NetworkState()
+    data class Success(val data: String) : NetworkState()
+    data class Error(val message: String) : NetworkState()
+}
+
+Key Rules of Sealed Classes:- 
+
+| Rule          | Explanation                     |
+| ------------- | ------------------------------- |
+| Inheritance   | Only in same file               |
+| Instantiation | ❌ Cannot create object directly |
+| Subclasses    | Known at compile time           |
+| Constructor   | Can have constructors           |
+| Modifiers     | Can be `abstract`               |
+
+Sealed Class with when :- 
+fun handle(state: NetworkState) {
+    when (state) {
+        is NetworkState.Loading -> println("Loading...")
+        is NetworkState.Success -> println(state.data)
+        is NetworkState.Error -> println(state.message)
+    }
+}
+No else required
+✔ Compiler checks completeness
+
+- Sealed Class vs Enum Class:- 
+| Feature     | Sealed Class    | Enum Class |
+| ----------- | --------------- | ---------- |
+| Instances   | Different types | Same type  |
+| State       | Can hold data   | Limited    |
+| Inheritance | Supports        | ❌          |
+| Flexibility | High            | Low        |
+
+Sealed Class vs Abstract Class:- 
+| Feature              | Sealed         | Abstract |
+| -------------------- | -------------- | -------- |
+| Subclass restriction | Same file only | Anywhere |
+| Compiler knowledge   | Full           | Partial  |
+| `when` safety        | ✔ Yes          | ❌ No     |
+
+Types of Subclasses in Sealed Class
+1️⃣ object
+object Loading : Result()
+
+2️⃣ data class
+data class Success(val data: String) : Result()
+
+3️⃣ class
+class Error : Result()
+
+Advantages:- 
+✅ Compile-time safety
+✅ No missing cases in when
+✅ Clean state handling
+✅ Better design
+
+Disadvantages:- 
+❌ Restricted inheritance
+❌ More boilerplate
+❌ Same-file limitation
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+enum class:- 
+.............
+
+- An enum class (enumeration class) in Kotlin is used to define a fixed set of constant values.
+👉 Each enum constant is an object of the enum class.
+
+Use enum class when:
+A variable can have only limited predefined values
+You want readable, type-safe constants
+You want to avoid magic numbers / strings
+
+Syntax of enum class:- 
+enum class EnumName {
+    VALUE1,
+    VALUE2,
+    VALUE3
+}
+Example:- 
+enum class Status {
+    SUCCESS,
+    ERROR,
+    LOADING
+}
+Accessing Enum Values:- 
+fun main() {
+    val s = Status.SUCCESS
+    println(s)
+}
+
+Enum with when Expression:- 
+...............................
+fun checkStatus(status: Status) {
+    when (status) {
+        Status.SUCCESS -> println("Success")
+        Status.ERROR -> println("Error")
+        Status.LOADING -> println("Loading")
+    }
+}
+✔ Compiler ensures all cases are handled
+✔ No else needed
+
+Enum with Functions:- 
+........................
+enum class Direction {
+    NORTH, SOUTH, EAST, WEST;
+
+    fun move() {
+        println("Moving $name")
+    }
+}
+Usage
+Direction.NORTH.move()
+
+Enum Class with Properties:- 
+...............................
+Enum constants can have constructor parameters.
+enum class Result(val code: Int) {
+    SUCCESS(200),
+    ERROR(500),
+    NOT_FOUND(404)
+}
+Usage
+println(Result.SUCCESS.code)
+
+
+Enum Built-in Properties & Methods:- 
+| Property / Method | Description              |
+| ----------------- | ------------------------ |
+| `name`            | Name of enum constant    |
+| `ordinal`         | Position (starts from 0) |
+| `values()`        | Returns all constants    |
+| `valueOf()`       | Convert String → Enum    |
+
+Iterating Over Enum Values:- 
+for (status in Status.values()) {
+    println(status)
+}
+
+Enum vs Sealed Class: -
+| Feature          | Enum Class      | Sealed Class     |
+| ---------------- | --------------- | ---------------- |
+| Number of values | Fixed constants | Fixed subclasses |
+| Data holding     | Limited         | Flexible         |
+| Inheritance      | ❌ No            | ✅ Yes            |
+| Best for         | States, types   | Complex states   |
+
+Advantages:- 
+✅ Type-safe
+✅ Readable code
+✅ Easy when handling
+✅ Built-in utility functions
