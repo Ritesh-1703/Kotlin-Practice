@@ -1,0 +1,768 @@
+Collections:- 
+...............
+
+A collection is a group of elements stored together.
+Kotlin provides two types of collections:
+| Type          | Description                    |
+| ------------- | ------------------------------ |
+| **Immutable** | Read-only (cannot modify)      |
+| **Mutable**   | Can add/remove/update elements |
+
+Collection Hierarchy:- 
+Collection
+ ├── List
+ └── Set
+Map (separate hierarchy)
+
+Mutable vs Immutable Collections:- 
+| Feature      | Immutable  | Mutable           |
+| ------------ | ---------- | ----------------- |
+| Modification | ❌ No       | ✅ Yes             |
+| Safety       | High       | Medium            |
+| Examples     | `listOf()` | `mutableListOf()` |
+
+Common Collection Functions:- 
+| Function     | Use                |
+| ------------ | ------------------ |
+| `size`       | Number of elements |
+| `contains()` | Check element      |
+| `isEmpty()`  | Empty or not       |
+| `first()`    | First element      |
+| `last()`     | Last element       |
+
+........................................................................................................
+
+List :- 
+.........
+
+A List is:
+An ordered collection
+Allows duplicate elements
+Elements are accessed using index (0-based)Immutable List (Read-Only)
+val list = listOf(10, 20, 30)
+
+- Types of List:- 
+....................
+Immutable List (Read-Only):- 
+
+Created using listOf()
+val list = listOf(1, 2, 3)
+Cannot add/remove/update elements
+
+Mutable List:- 
+
+Created using mutableListOf()
+val list = mutableListOf(1, 2, 3)
+list.add(4)
+✔ Can modify elements
+
+- Basic List Operations:- 
+Creating List:- 
+val numbers = listOf(10, 20, 30, 20)
+Accessing Elements:- 
+println(numbers[0])       
+println(numbers.get(1))
+List Size:- 
+println(numbers.size)
+Check Element:- 
+println(numbers.contains(20)) 
+
+- Mutable List Functions:- 
+.............................................
+
+| Function              | Description     |
+| --------------------- | --------------- |
+| `add()`               | Add element     |
+| `add(index, element)` | Add at position |
+| `remove()`            | Remove element  |
+| `removeAt()`          | Remove by index |
+| `clear()`             | Remove all      |
+| `set(index, value)`   | Update element  |
+
+
+for Loop:- 
+..............
+for (item in list) {
+    println(item)
+}
+
+forEach:- 
+...............
+list.forEach {
+    println(it)
+}
+
+forEachIndexed:- 
+..................
+list.forEachIndexed { index, value ->
+    println("Index $index = $value")
+}
+
+ - Filtering Functions:- 
+
+filter:- 
+.........
+Selects elements based on condition.
+val nums = listOf(1, 2, 3, 4, 5)
+val even = nums.filter { it % 2 == 0 }
+println(even)
+
+filterNot:- 
+..............
+val result = nums.filterNot { it % 2 == 0 }
+
+filterIndexed:- 
+................
+nums.filterIndexed { index, value ->
+    index % 2 == 0
+}
+
+filterIsInstance:- 
+.....................
+val mixed = listOf(1, "Kotlin", 2.5)
+val strings = mixed.filterIsInstance<String>()
+
+
+-  Transformation Functions:- 
+.................................
+
+map:- 
+......
+Transforms elements.
+val squares = nums.map { it * it }
+
+mapIndexed:- 
+.............
+nums.mapIndexed { index, value ->
+    "$index:$value"
+}
+
+flatMap:- 
+............
+Flattens nested lists.
+val list = listOf(listOf(1, 2), listOf(3, 4))
+val result = list.flatMap { it }
+
+- Searching & Checking Functions:- 
+| Function  | Use                    |
+| --------- | ---------------------- |
+| `find()`  | First matching element |
+| `first()` | First element          |
+| `last()`  | Last element           |
+| `any()`   | Any match              |
+| `all()`   | All match              |
+| `none()`  | No match               |
+
+- Sorting Functions:- 
+.......................
+nums.sorted()
+nums.sortedDescending()
+
+Aggregation Functions:- 
+........................
+
+| Function      | Description |
+| ------------- | ----------- |
+| `sum()`       | Sum         |
+| `average()`   | Average     |
+| `maxOrNull()` | Max         |
+| `minOrNull()` | Min         |
+| `count()`     | Count       |
+
+- Removing & Modifying (Mutable List):- 
+.........................................
+list.removeIf { it > 3 }
+list.replaceAll { it * 2 }
+
+
+Chaining Functions (Filter + Map + ForEach):- 
+...............................................
+nums
+    .filter { it % 2 == 0 }
+    .map { it * 10 }
+    .forEach { println(it) }
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Set:- 
+......
+
+A Set is:
+A collection of unique elements
+No duplicate values allowed
+Order is not guaranteed (by default)
+val set = setOf(1, 2, 3, 2)
+println(set)
+
+Types of Set:- 
+..............
+
+Immutable Set (Read-Only):- 
+...........................
+Created using setOf()
+val set = setOf("A", "B", "C")
+❌ Cannot add or remove elements
+
+Mutable Set :- 
+...............
+Created using mutableSetOf()
+val set = mutableSetOf(1, 2, 3)
+set.add(4)
+✔ Can modify elements
+
+HashSet:- 
+.............
+val set = hashSetOf(3, 1, 2)
+Fast access
+No order guarantee
+
+LinkedHashSet:- 
+val set = linkedSetOf(3, 1, 2)
+Maintains insertion order
+
+SortedSet (TreeSet):-
+........................
+val set = sortedSetOf(3, 1, 2)
+
+Basic Set Operations:- 
+........................
+
+Create Set:- 
+val numbers = setOf(10, 20, 30)
+
+Check Element:- 
+println(numbers.contains(20))
+
+Set Size
+println(numbers.size)
+
+Mutable Set Functions:- 
+..........................
+| Function      | Description          |
+| ------------- | -------------------- |
+| `add()`       | Add element          |
+| `remove()`    | Remove element       |
+| `clear()`     | Remove all           |
+| `addAll()`    | Add collection       |
+| `removeAll()` | Remove collection    |
+| `retainAll()` | Keep common elements |
+
+Iteration in Set:- 
+...................
+
+for Loop:- 
+.............
+for (item in set) {
+    println(item)
+}
+
+forEach:- 
+............
+set.forEach {
+    println(it)
+}
+
+Filtering Functions:- 
+.......................
+
+filter:- 
+...........
+val nums = setOf(1, 2, 3, 4, 5)
+val even = nums.filter { it % 2 == 0 }
+println(even)
+
+FilterNot:- 
+...............
+nums.filterNot { it % 2 == 0 }
+
+filterIndexed:- 
+..................
+nums.filterIndexed { index, value ->
+    index % 2 == 0
+}
+
+filterIsInstance:- 
+....................
+val mixed = setOf(1, "Kotlin", 2.5)
+val strings = mixed.filterIsInstance<String>()
+
+Transformation Functions:- 
+............................
+
+map:- 
+...........
+val squares = nums.map { it * it }
+
+mapNotNull:- 
+..............
+val result = nums.mapNotNull {
+    if (it > 2) it else null
+}
+
+flatMap:-
+...........
+val set = setOf(setOf(1, 2), setOf(3, 4))
+val result = set.flatMap { it }
+
+Searching & Checking Functions:- 
+................................
+| Function  | Use          |
+| --------- | ------------ |
+| `find()`  | Find element |
+| `any()`   | Any match    |
+| `all()`   | All match    |
+| `none()`  | No match     |
+| `count()` | Count        |
+
+Set Mathematical Operations:- 
+..............................
+
+Union:- 
+val a = setOf(1, 2)
+val b = setOf(2, 3)
+val union = a union b
+
+Intersection:- 
+val intersection = a intersect b
+
+Difference:- 
+val diff = a subtract b
+
+Sorting Set:- 
+val sorted = set.sorted()
+Returns a List
+
+Removing Using Condition (Mutable Set):- 
+set.removeIf { it > 3 }
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Map:- 
+.......
+
+A Map stores data in key–value pairs.
+Keys are unique
+Values can be duplicate
+Access data using key, not index
+val map = mapOf(1 to "One", 2 to "Two")
+
+Map is NOT a Collection
+Map does not extend Collection
+
+Types of Map in Kotlin:- 
+..........................
+
+Immutable Map (Read-Only):-
+..........................
+Created using mapOf()
+val map = mapOf(
+    1 to "One",
+    2 to "Two"
+)
+❌ Cannot modify
+
+Mutable Map:- 
+...............
+Created using mutableMapOf()
+val map = mutableMapOf<Int, String>()
+map[1] = "One"
+map[2] = "Two"
+✔ Can add, update, remove
+
+HashMap:- 
+................
+val map = hashMapOf(3 to "C", 1 to "A")
+Fast
+No order guarantee
+
+LinkedHashMap:-
+................
+val map = linkedMapOf(3 to "C", 1 to "A")
+Maintains insertion order
+
+SortedMap (TreeMap):-
+.......................
+val map = sortedMapOf(3 to "C", 1 to "A")
+
+Basic Map Operations:- 
+..........................
+
+Access Value:- 
+println(map[1])
+println(map.get(2))
+
+Check Key / Value:- 
+map.containsKey(1)
+map.containsValue("One")
+
+Map Size:- 
+println(map.size)
+
+Mutable Map Functions:- 
+..........................
+| Function     | Description   |
+| ------------ | ------------- |
+| `put()`      | Add / update  |
+| `remove()`   | Remove key    |
+| `clear()`    | Remove all    |
+| `putAll()`   | Add multiple  |
+| `replace()`  | Replace value |
+| `getOrPut()` | Get or insert |
+
+Iterating Over Map:- 
+......................
+
+forEach:- 
+..........
+map.forEach { key, value ->
+    println("$key = $value")
+}
+
+Loop Using entries:- 
+......................
+for (entry in map.entries) {
+    println("${entry.key} -> ${entry.value}")
+}
+
+Filtering in Map:- 
+.....................
+
+filter (key & value):- 
+........................
+val map = mapOf(1 to 10, 2 to 20, 3 to 30)
+val result = map.filter { (key, value) ->
+    value > 15
+}
+
+filterKeys:- 
+..............
+map.filterKeys { it > 1 }
+
+filterValues:- 
+.................
+map.filterValues { it >= 20 }
+
+Transformation in Map:- 
+..........................
+
+mapValues:- 
+val result = map.mapValues { it.value * 2 }
+
+mapKeys
+map.mapKeys { it.key * 10 }
+
+map (returns List):-
+val list = map.map { (k, v) ->
+    "$k=$v"
+}
+
+Searching & Checking:- 
+........................
+
+| Function         | Use           |
+| ---------------- | ------------- |
+| `getOrDefault()` | Default value |
+| `any()`          | Any match     |
+| `all()`          | All match     |
+| `none()`         | No match      |
+| `count()`        | Count         |
+
+Advanced Useful Functions:- 
+............................
+
+getOrPut:- 
+.............
+val map = mutableMapOf<String, Int>()
+val value = map.getOrPut("A") { 1 }
+
+merge:- 
+..........
+map.merge("A", 1) { old, new ->
+    old + new
+}
+
+Converting Map:- 
+...................
+map.keys.toList()
+map.values.toSet()
+
+Map vs List vs Set:- 
+.....................
+
+| Feature    | List   | Set           | Map       |
+| ---------- | ------ | ------------- | --------- |
+| Duplicates | ✔      | ❌           | Keys ❌   |
+| Access     | Index  | No index      | Key       |
+| Structure  | Values | Unique values | Key-Value |
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+ArrayList:- 
+.............
+
+ArrayList is a resizable array implementation of MutableList.
+Maintains insertion order
+Allows duplicate elements
+Allows index-based access
+Backed by a dynamic array
+val list = ArrayList<Int>()
+
+Use ArrayList when:
+You need frequent access using index
+You want a growable array
+You need Java interoperability
+✔ Faster read operations
+❌ Slower insert/delete in middle
+
+Creating ArrayList:- 
+.....................
+
+Empty ArrayList:- 
+...................
+val list = ArrayList<String>()
+
+ArrayList with Initial Elements:- 
+val list = arrayListOf("A", "B", "C")
+
+From Another Collection:- 
+val list = ArrayList(listOf(1, 2, 3))
+
+Basic Operations:- 
+....................
+Add Elements:- 
+list.add("D")
+list.add(1, "B1")
+
+Access Elements:- 
+println(list[0])
+println(list.get(1))
+
+Update Elements:- 
+list[0] = "A1"
+
+Remove Elements:- 
+list.remove("B")
+list.removeAt(0)
+
+Size:- 
+println(list.size)
+
+Important ArrayList Functions:- 
+...................................
+| Function        | Description     |
+| --------------- | --------------- |
+| `add()`         | Add element     |
+| `addAll()`      | Add collection  |
+| `remove()`      | Remove element  |
+| `removeAt()`    | Remove by index |
+| `clear()`       | Remove all      |
+| `contains()`    | Check element   |
+| `isEmpty()`     | Check empty     |
+| `indexOf()`     | First index     |
+| `lastIndexOf()` | Last index      |
+| `subList()`     | Part of list    |
+
+Iteration Methods:- 
+......................
+
+for Loop:- 
+for (item in list) {
+    println(item)
+}
+
+forEach:-
+list.forEach {
+    println(it)
+}
+
+forEachIndexed:- 
+list.forEachIndexed { index, value ->
+    println("$index = $value")
+}
+
+Filtering Functions:- 
+......................
+
+
+filter:- 
+val nums = arrayListOf(1, 2, 3, 4, 5)
+val even = nums.filter { it % 2 == 0 }
+println(even)
+✔ Returns List, not ArrayList
+
+filterNot:- 
+nums.filterNot { it > 3 }
+
+filterIndexed:- 
+nums.filterIndexed { index, _ ->
+    index % 2 == 0
+}
+
+Transformation Functions:- 
+............................
+
+map:- 
+val squares = nums.map { it * it }
+
+mapIndexed:-
+nums.mapIndexed { index, value ->
+    "$index:$value"
+}
+
+flatMap:- 
+val list = arrayListOf(
+    arrayListOf(1, 2),
+    arrayListOf(3, 4)
+)
+val result = list.flatMap { it }
+
+Searching & Checking:- 
+.......................
+
+| Function  | Use           |
+| --------- | ------------- |
+| `find()`  | First match   |
+| `first()` | First element |
+| `last()`  | Last element  |
+| `any()`   | Any match     |
+| `all()`   | All match     |
+| `none()`  | No match      |
+| `count()` | Count         |
+
+Sorting & Reversing:- 
+.......................
+list.sort()
+list.sortDescending()
+list.reverse()
+
+Modifying Elements in Bulk:- 
+...............................
+list.replaceAll { it * 2 }
+list.removeIf { it < 5 }
+
+Converting ArrayList:- 
+.......................
+list.toList()
+list.toSet()
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Lambda Expression:- 
+.......................
+A lambda is an anonymous function (function without a name).
+It can be stored in a variable
+It can be passed as a parameter
+It can be returned from a function
+👉 Lambdas help write short, clean, functional-style code.
+
+Basic Syntax of Lambda:- 
+{ parameters -> body }
+
+val add = { a: Int, b: Int -> a + b }
+println(add(2, 3))   // 5
+
+Lambda with Type Declaration:- 
+................................
+val multiply: (Int, Int) -> Int = { a, b ->
+    a * b
+}
+
+it Keyword (Very Important):- 
+...............................
+If a lambda has only one parameter, you can use it.
+val square: (Int) -> Int = { it * it }
+
+Lambda with No Parameters:- 
+.............................
+val greet: () -> Unit = {
+    println("Hello Kotlin")
+}
+
+
+Lambda with Multiple Statements:- 
+.....................................
+val operation = { a: Int, b: Int ->
+    println("Adding")
+    a + b   // last line is return value
+}
+
+Lambda Return Value Rule:- 
+..............................
+👉 The last expression is automatically returned.
+val check = { x: Int ->
+    if (x > 0) "Positive" else "Negative"
+}
+
+
+Lambdas with Collections:- 
+.............................
+
+forEach:- 
+.............
+val list = listOf(1, 2, 3)
+list.forEach { println(it) }
+
+filter:- 
+.............
+val even = list.filter { it % 2 == 0 }
+
+map:- 
+......
+val square = list.map { it * it }
+
+find:- 
+........
+val firstEven = list.find { it % 2 == 0 }
+
+any, all, none:- 
+....................
+list.any { it > 5 }
+list.all { it > 0 }
+list.none { it < 0 }
+
+Lambda as Function Parameter:- 
+.................................
+fun calculate(a: Int, b: Int, op: (Int, Int) -> Int) {
+    println(op(a, b))
+}
+calculate(4, 2) { x, y -> x + y }
+calculate(4, 2) { x, y -> x * y }
+
+Lambda with when:- 
+.....................
+val grade = { marks: Int ->
+    when {
+        marks >= 90 -> "A"
+        marks >= 60 -> "B"
+        else -> "C"
+    }
+}
+
+Lambda with Nullable Types:- 
+................................
+val name: String? = "Ritesh"
+
+name?.let {
+    println(it.length)
+}
+✔ let uses lambda
+
+Lambda with let, apply, run, also (Intro):- 
+..............................................
+val user = "Kotlin"
+user.let { println(it) }
+(All these use lambdas internally)
+
+val users = listOf("Amit", "Neha", "Ritesh")
+users
+    .filter { it.length > 4 }
+    .map { it.uppercase() }
+    .forEach { println(it) }
+
+
+Advantages of Lambdas:-
+...........................
+✔ Less boilerplate
+✔ Clean code
+✔ Functional programming
+✔ Better readability
