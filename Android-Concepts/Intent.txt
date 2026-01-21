@@ -1,0 +1,166 @@
+............................
+Intent:- 
+............................
+
+Intent Android ka backbone hai. Screen change, data pass, system apps open, broadcast send — sab kuch Intent se hota hai.
+
+Intent ek message object hota hai jo Android system ko batata hai:
+“Mujhe kya kaam karna hai?”
+Intent ke through:
+✔ Activity open hoti hai
+✔ Service start hoti hai
+✔ Broadcast send hota hai
+✔ Data share hota hai
+
+2️⃣ Intent ke Main Components 🧱:- 
+.....................................
+| Component | Meaning                 |
+| --------- | ----------------------- |
+| Context   | Kaun request kar raha   |
+| Target    | Kis Activity/Service ko |
+| Action    | Kya kaam                |
+| Data      | Kis data par            |
+| Extras    | Additional info         |
+
+3️⃣ Types of Intent (MOST IMPORTANT 🔥):- 
+...........................................
+
+1. Explicit Intent (Same App ke andar):- 
+.............................................
+👉 Jab hume pata ho exact kaunsi Activity open karni hai
+Example: Screen Change
+val intent = Intent(this, SecondActivity::class.java)
+startActivity(intent)
+✔ Login → Home
+✔ Splash → Main\
+
+🔹 Explicit Intent with Data:- 
+.....................................
+Send Data
+val intent = Intent(this, ProfileActivity::class.java)
+intent.putExtra("username", "Rahul")
+intent.putExtra("age", 22)
+startActivity(intent)
+
+Receive Data:- 
+.......................
+val name = intent.getStringExtra("username")
+val age = intent.getIntExtra("age", 0)
+
+🔹 2. Implicit Intent (System ya Other Apps):- 
+.................................................
+👉 Jab hume kaunsa app open hoga pata nahi hota
+Dialer Open:- 
+................
+val intent = Intent(Intent.ACTION_DIAL)
+intent.data = Uri.parse("tel:9876543210")
+startActivity(intent)
+
+Browser Open:-
+........................
+val intent = Intent(Intent.ACTION_VIEW)
+intent.data = Uri.parse("https://google.com")
+startActivity(intent)
+
+Share Text:- 
+..........................
+val intent = Intent(Intent.ACTION_SEND)
+intent.type = "text/plain"
+intent.putExtra(Intent.EXTRA_TEXT, "Hello World")
+startActivity(Intent.createChooser(intent, "Share via"))
+
+4️⃣ Intent Filter (Manifest MAGIC ✨):- 
+............................................
+Intent Filter batata hai:
+“Kaun si Activity kis intent ko handle karegi”
+<intent-filter>
+    <action android:name="android.intent.action.VIEW"/>
+    <category android:name="android.intent.category.DEFAULT"/>
+    <data android:scheme="https"/>
+</intent-filter>
+✔ Deep linking
+✔ App chooser
+
+5️⃣ Activity Result (Old vs New):- 
+.......................................
+❌ Old (Deprecated)
+startActivityForResult(intent, 100)
+
+✅ New (Modern Way – MUST USE):- 
+.....................................
+val launcher = registerForActivityResult(
+    ActivityResultContracts.StartActivityForResult()
+) { result ->
+    if (result.resultCode == RESULT_OK) {
+        val data = result.data?.getStringExtra("result")
+    }
+}
+launcher.launch(intent)
+
+......................................
+6️⃣ Intent Flags (Advanced 🔥):- 
+......................................
+
+| Flag                     | Use             |
+| ------------------------ | --------------- |
+| FLAG_ACTIVITY_NEW_TASK   | New task start  |
+| FLAG_ACTIVITY_CLEAR_TOP  | Stack clear     |
+| FLAG_ACTIVITY_SINGLE_TOP | Duplicate avoid |
+ex:- 
+intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+
+....................................................
+7️⃣ Passing Objects (Parcelable vs Serializable):- 
+.....................................................
+
+Serializable (Slow):- 
+...........................
+class User : Serializable
+
+✅ Parcelable (FAST 🔥):- 
+...............................
+@Parcelize
+data class User(val name: String, val age: Int) : Parcelable
+intent.putExtra("user", user)
+val user = intent.getParcelableExtra<User>("user")
+
+................................
+8️⃣ Intent with Services:- 
+................................
+Start Service:- 
+startService(Intent(this, MyService::class.java))
+
+Foreground Service (Android 8+):- 
+startForegroundService(intent)
+
+...........................
+9️⃣ Broadcast Intent:- 
+...........................
+sendBroadcast(Intent("com.example.ACTION_LOGOUT"))
+registerReceiver(receiver, IntentFilter("com.example.ACTION_LOGOUT"))
+
+...........................................
+🔟 Security & Best Practices 🔐:- 
+...........................................
+✔ Implicit intent carefully use karo
+✔ Sensitive data intent me mat bhejo
+✔ Explicit intent safe hota hai
+✔ Exported=false use karo
+android:exported="false"
+
+1️⃣1️⃣ Common Intent Errors ❌:- 
+..................................
+| Error                     | Reason                  |
+| ------------------------- | ----------------------- |
+| ActivityNotFoundException | No app to handle intent |
+| Null data                 | Extra missing           |
+| App crash                 | Wrong key               |
+
+..........................................
+1️⃣2️⃣ Real-Life Use Case Flow 🔁:- 
+..........................................
+👉 Login Activity
+→ Explicit Intent
+→ Home Activity
+→ Implicit Intent
+→ Share App

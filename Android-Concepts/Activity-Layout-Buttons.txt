@@ -1,0 +1,286 @@
+Activity kya hoti hai?
+
+Activity ek single screen hoti hai jo user ke saath interact karti hai.
+Jaise:
+Login Screen
+Home Screen
+Settings Screen
+👉 Har screen = ek Activity
+
+Activity ka kaam
+UI show karna
+User input handle karna
+Dusri Activity open karna
+App lifecycle manage karna
+
+
+Lifecycle flow:
+1️⃣ onCreate()
+Activity create hoti hai
+XML layout yahin attach hota hai
+2️⃣ onStart()
+Activity visible hoti hai
+3️⃣ onResume()
+User interact kar sakta hai
+4️⃣ onPause()
+Activity partially hidden (call, dialog)
+5️⃣ onStop()
+Activity fully hidden
+6️⃣ onDestroy()
+Activity memory se remove
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+}
+
+
+- Layout XML (UI ka Blueprint 🏗️):- 
+Layout XML file UI ka structure define karti hai.
+📁 Location:
+res/layout/activity_main.xml
+
+Common Layout Types:- 
+.......................
+1️⃣ LinearLayout:- 
+Items ek line me (vertical/horizontal)
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+</LinearLayout>
+
+2️⃣ RelativeLayout:- 
+Views relative position me
+
+3️⃣ ConstraintLayout (🔥 RECOMMENDED):- 
+Flexible, fast, modern
+<Button
+    android:id="@+id/btnClick"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+🔹 View IDs ka role
+android:id="@+id/myButton"
+👉 Kotlin me access:
+findViewById<Button>(R.id.myButton)
+🔹 Expert Level XML Tips:- 
+✔ ConstraintLayout performance best
+✔ Hardcoded text mat likho → strings.xml
+✔ Dimensions → dimens.xml
+✔ Dark Mode support rakho
+
+Buttons:- 
+.............
+
+
+Button ek clickable View hai jo user ke tap (click) par koi action perform karta hai.
+Examples:
+Login Button
+Submit Button
+Add to Cart
+Next / Previous
+👉 Android me Button ek TextView ka child class hota hai
+(Isliye text-related properties milti hain)
+
+Button ke Types (IMPORTANT):- 
+..................................
+🔹 1. Normal Button:- 
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Click Me"/>
+
+🔹 2. MaterialButton (🔥 Recommended):- 
+Material Design follow karta hai
+
+<com.google.android.material.button.MaterialButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Login"/>
+✅ Rounded corners
+✅ Ripple effect
+✅ Theme support
+
+🔹 3. ImageButton:- 
+Sirf image clickable hoti hai
+
+<ImageButton
+    android:src="@drawable/ic_add"
+    android:background="@null"/>
+
+🔹 4. FloatingActionButton (FAB):- 
+Mostly main action ke liye
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:src="@drawable/ic_add"/>
+
+
+...............................................
+3️⃣ Button XML Attributes (Deep Dive 🧠):- 
+................................................
+
+
+🔹 Size & Position:- 
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_margin="16dp"
+
+🔹 Text Related:- 
+android:text="Submit"
+android:textSize="16sp"
+android:textColor="#FFFFFF"
+android:textAllCaps="false"
+
+🔹 Background & Shape:- 
+android:background="@color/purple_500"
+OR custom shape (BEST PRACTICE)
+android:background="@drawable/btn_bg"
+
+🔹 Enable / Disable:- 
+android:enabled="false"
+
+🔹 ID (MOST IMPORTANT):- 
+android:id="@+id/btnLogin"
+
+4️⃣ Kotlin me Button ka Use:- 
+................................
+🔹 findViewById (Basic):- 
+val btnLogin = findViewById<Button>(R.id.btnLogin)
+
+🔹 Button Click Listener (MOST USED)
+......................................
+btnLogin.setOnClickListener {
+    Toast.makeText(this, "Login Clicked", Toast.LENGTH_SHORT).show()
+}
+
+........................................
+Button Click ke Different Ways:- 
+.......................................
+✅ Method 1: setOnClickListener (BEST ✔️):- 
+✔ Clean
+✔ Safe
+✔ Recommended
+
+❌ Method 2: XML onClick (Avoid in big apps):- 
+..............................................
+android:onClick="onLoginClick"
+
+fun onLoginClick(view: View) {
+}
+👎 Debugging hard
+👎 Code messy ho jata hai
+
+6️⃣ Button States (VERY IMPORTANT 🔥):- 
+.........................................
+Button ke multiple states hote hain:
+
+State	    Meaning
+pressed	    User press kar raha
+focused	    Keyboard focus
+enabled	    Clickable
+disabled	Click block
+selected	Selected state
+
+State Selector Example: -
+................................
+
+📁 res/drawable/button_selector.xml
+
+<selector>
+    <item android:state_pressed="true"
+        android:drawable="@color/red"/>
+
+    <item android:state_enabled="false"
+        android:drawable="@color/gray"/>
+
+    <item android:drawable="@color/green"/>
+</selector>
+
+android:background="@drawable/button_selector"
+
+7️⃣ Custom Button Design (Professional Level 🎨):- 
+.....................................................
+🔹 Rounded Button (Shape Drawable)
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#6200EE"/>
+    <corners android:radius="20dp"/>
+    <padding
+        android:left="16dp"
+        android:top="8dp"
+        android:right="16dp"
+        android:bottom="8dp"/>
+</shape>
+
+8️⃣ Button Enable / Disable Dynamically:- 
+..................................................
+btnLogin.isEnabled = false
+Example:
+
+if (email.isNotEmpty()) {
+    btnLogin.isEnabled = true
+}
+
+9️⃣ Prevent Multiple Clicks (Expert Tip 🔥):- 
+...............................................
+🔹 Debounce Button Click
+btnLogin.setOnClickListener {
+    btnLogin.isEnabled = false
+    // API call
+    btnLogin.isEnabled = true
+}
+
+
+OR
+
+var lastClick = 0L
+btnLogin.setOnClickListener {
+    if (System.currentTimeMillis() - lastClick < 1000) return@setOnClickListener
+    lastClick = System.currentTimeMillis()
+}
+
+🔟 Button with Icon + Text:- 
+..................................
+<com.google.android.material.button.MaterialButton
+    android:text="Save"
+    app:icon="@drawable/ic_save"
+    app:iconGravity="textStart"/>
+
+1️⃣1️⃣ Button Styling via Theme (Expert Level 🧠):- 
+.........................................................
+<style name="MyButtonStyle">
+    <item name="android:background">@color/black</item>
+    <item name="android:textColor">@color/white</item>
+</style>
+style="@style/MyButtonStyle"
+
+1️⃣2️⃣ Accessibility & Best Practices ♿:- 
+.............................................
+✔ Content description add karo
+android:contentDescription="Login Button"
+✔ Button text short rakho
+✔ All caps avoid karo
+✔ Minimum height: 48dp
+
+
+1️⃣3️⃣ Real-World Button Use Case (Login Example):- 
+.........................................................
+btnLogin.setOnClickListener {
+    if (email.isEmpty()) {
+        btnLogin.error = "Email required"
+    } else {
+        startActivity(Intent(this, HomeActivity::class.java))
+    }
+}
+
+Button ke baare me yaad rakhne wali baatein::-
+.....................................................
+✅ Button ek clickable View hai
+✅ MaterialButton use karo
+✅ Click listener Kotlin me likho
+✅ Multiple click prevent karo
+✅ State + custom design sikho

@@ -1,0 +1,265 @@
+Android Studio me Views:- 
+....................................
+Android Studio me left side pe 3 views milte hain:
+1️⃣ Android View (beginner friendly)
+2️⃣ Project View (REAL structure – IMPORTANT 🔥)
+3️⃣ Packages View
+
+ROOT LEVEL (Top Level): -
+..............................
+
+MyApplication/
+│
+├── .gradle/
+├── .idea/
+├── build/
+├── gradle/
+├── app/
+├── build.gradle (Project)
+├── settings.gradle
+├── gradle.properties
+└── gradlew
+1️⃣ .gradle/
+✔ Gradle ka cache
+✔ Build performance fast karta hai
+✔ Kabhi manually edit mat karo
+
+2️⃣ .idea/
+✔ Android Studio ke internal settings
+✔ Git me mostly ignore hota hai
+
+3️⃣ build/
+✔ Auto-generated files
+✔ APK, intermediates, outputs
+
+4️⃣ gradle/
+gradle/
+ └── wrapper/
+     ├── gradle-wrapper.jar
+     └── gradle-wrapper.properties
+✔ Ye ensure karta hai ki same Gradle version sab machines pe chale
+
+5️⃣ gradlew
+✔ Gradle wrapper executable
+✔ CI/CD pipelines me use hota hai
+
+🏗️ PROJECT LEVEL GRADLE FILES:- 
+....................................
+🔹 build.gradle (Project level)
+Yahan:
+✔ Plugin versions
+✔ Repositories
+✔ Global configs hote hain
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+settings.gradle:- 
+include ':app'
+rootProject.name = "MyApplication"
+✔ Kaunsa module project me hai
+
+🔹 gradle.properties:- 
+✔ Memory settings
+✔ Performance tuning
+org.gradle.jvmargs=-Xmx2048m
+
+
+APP MODULE (MOST IMPORTANT 🔥):- 
+.....................................
+
+app/
+│
+├── build/
+├── libs/
+├── src/
+├── build.gradle (Module)
+└── proguard-rules.pro
+
+1️⃣ build.gradle (Module level) – ❤️ HEART OF APP:- 
+.....................................................
+YAHI DEPENDENCIES LOAD HOTI HAIN 🔥
+android {
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.myapp"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+🔹 Dependencies kaise add karte hain?:- 
+..............................................
+dependencies {
+    implementation "androidx.core:core-ktx:1.12.0"
+    implementation "com.google.android.material:material:1.11.0"
+}
+📌 Add karne ke baad:
+👉 Sync Now click karo
+
+Types of Dependencies:- 
+.............................
+| Type                  | Use            |
+| --------------------- | -------------- |
+| implementation        | Normal use     |
+| api                   | Library expose |
+| testImplementation    | Unit test      |
+| debugImplementation   | Debug only     |
+| releaseImplementation | Release only   |
+
+SRC FOLDER (REAL APP YAHIN HAI):- 
+....................................
+src/
+ ├── main/
+ │   ├── java/
+ │   ├── res/
+ │   └── AndroidManifest.xml
+ │
+ ├── androidTest/
+ └── test/
+
+
+java/ (OR kotlin/):- 
+........................
+java/com/example/myapp/
+│
+├── ui/
+│   ├── MainActivity.kt
+│   └── LoginActivity.kt
+│
+├── adapter/
+├── model/
+├── utils/
+└── viewmodel/
+✔ Activities
+✔ Fragments
+✔ ViewModels
+✔ Business logic
+
+res/ (RESOURCES):- 
+......................
+res/
+├── layout/
+├── drawable/
+├── mipmap/
+├── values/
+├── menu/
+├── raw/
+└── xml/
+
+layout/:- 
+................
+✔ XML UI files
+activity_main.xml
+fragment_home.xml
+
+drawable/
+
+✔ Images
+✔ Shapes
+✔ Selectors
+
+🔹 mipmap/
+
+✔ App icons (launcher)
+
+🔹 values/ (VERY IMPORTANT):- 
+..................................
+values/
+├── colors.xml
+├── styles.xml
+├── strings.xml
+├── themes.xml
+└── dimens.xml
+✔ No hardcoding
+✔ Multi-language support
+
+menu/
+
+✔ Toolbar / options menu
+
+🔹 xml/:- 
+.................
+✔ FileProvider
+✔ Backup rules
+✔ Network security config
+
+
+...................................................
+📄 AndroidManifest.xml (APP KI KUNDLI 🧬):- 
+.................................................
+<application>
+    <activity android:name=".MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
+    </activity>
+</application>
+✔ Activities declare
+✔ Permissions
+✔ App config
+
+
+🧪 TESTING FOLDERS:- 
+............................
+🔹 test/
+✔ Unit tests (JVM)
+
+🔹 androidTest/:-
+✔ Instrumented tests
+✔ Real device pe
+
+................................
+SDK kya hota hai?:- 
+................................
+
+SDK = Software Development Kit
+Includes:
+✔ Android APIs
+✔ Build tools
+✔ Emulator
+✔ Platform tools
+
+SDK Levels:- 
+....................
+| Term       | Meaning                |
+| ---------- | ---------------------- |
+| minSdk     | Lowest Android version |
+| targetSdk  | Tested version         |
+| compileSdk | Compile APIs           |
+
+APIs
+🔹 SDK Manager:- 
+Android Studio → Settings → SDK Manager
+✔ Platforms install
+✔ Tools install
+✔ Emulator images
+
+ANDROID STUDIO – IMPORTANT THINGS 🔥:- 
+.........................................
+🔹 Gradle Sync:- 
+.................
+✔ Dependencies download hoti hain
+✔ SDK match hota hai
+
+🔹 Build Variants:- 
+✔ Debug
+✔ Release
+
+🔹 AVD Manager:-
+✔ Emulator create
+✔ Device simulate
+
+🔹 Logcat:- 
+✔ Error / crash debug
+
+🔹 Terminal:- 
+✔ Git
+✔ Gradle commands
