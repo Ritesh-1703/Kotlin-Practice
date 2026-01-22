@@ -19,12 +19,14 @@ class MainActivity : AppCompatActivity() {
         cricket.setOnClickListener {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, CricketerFragment())
+                .addToBackStack(null)
                 .commit()
         }
 
         county.setOnClickListener {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, CountryFragment())
+                .addToBackStack(null)
                 .commit()
         }
 

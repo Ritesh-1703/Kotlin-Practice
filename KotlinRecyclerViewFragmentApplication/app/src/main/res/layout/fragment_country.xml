@@ -3,14 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
+
     tools:context=".CountryFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_gravity="center"
         android:id="@+id/countryReView"
         android:layout_width="match_parent"
+        android:background="#F54927"
         android:layout_height="match_parent"
+
         />
+
+    <Button
+        android:id="@+id/Back"
+        android:layout_width="125dp"
+        android:layout_height="65dp"
+        android:layout_gravity="bottom|right"
+        android:text="Back"
+        android:backgroundTint="#17C259"
+        android:textSize="16sp" />
 
 </FrameLayout>
