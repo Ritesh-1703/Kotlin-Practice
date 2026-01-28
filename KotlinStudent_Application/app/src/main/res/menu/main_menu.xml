@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Search Menu Item -->
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search"
+        app:showAsAction="ifRoom"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+    <!-- Sort Submenu -->
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="Sort"
+        app:showAsAction="ifRoom">
+
+        <menu>
+            <!-- Sort by Name -->
+            <group android:id="@+id/group_sort_name">
+                <item
+                    android:id="@+id/action_sort_name_asc"
+                    android:title="Name (A-Z)" />
+                <item
+                    android:id="@+id/action_sort_name_desc"
+                    android:title="Name (Z-A)" />
+            </group>
+
+            <!-- Sort by Marks -->
+            <group android:id="@+id/group_sort_marks">
+                <item
+                    android:id="@+id/action_sort_marks_asc"
+                    android:title="Marks (Low to High)" />
+                <item
+                    android:id="@+id/action_sort_marks_desc"
+                    android:title="Marks (High to Low)" />
+            </group>
+        </menu>
+    </item>
+
+    <!-- More Actions -->
+    <item
+        android:id="@+id/action_more"
+        android:icon="@android:drawable/ic_menu_more"
+        android:title="More"
+        app:showAsAction="ifRoom">
+
+        <menu>
+            <!-- Export Data -->
+            <item
+                android:id="@+id/action_export"
+                android:icon="@android:drawable/ic_menu_save"
+                android:title="Export Data" />
+
+            <!-- Import Data -->
+            <item
+                android:id="@+id/action_import"
+                android:icon="@android:drawable/ic_menu_upload"
+                android:title="Import Data" />
+
+            <!-- Delete All -->
+            <item
+                android:id="@+id/action_delete_all"
+                android:icon="@android:drawable/ic_menu_delete"
+                android:title="Delete All Students" />
+
+            <!-- Settings -->
+            <item
+                android:id="@+id/action_settings"
+                android:icon="@android:drawable/ic_menu_preferences"
+                android:title="Settings" />
+
+            <!-- About -->
+            <item
+                android:id="@+id/action_about"
+                android:icon="@android:drawable/ic_menu_info_details"
+                android:title="About" />
+        </menu>
+    </item>
+
+</menu>

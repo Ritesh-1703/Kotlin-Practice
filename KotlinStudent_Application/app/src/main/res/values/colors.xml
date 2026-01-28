@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+    <color name="purple_500">#673AB7</color>
+    <color name="purple_700">#512DA8</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+
+    <!-- UI Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#757575</color>
+    <color name="light_gray">#E0E0E0</color>
+
+    <!-- Status Colors -->
+    <color name="red">#F44336</color>
+    <color name="green">#4CAF50</color>
+    <color name="blue">#2196F3</color>
+    <color name="orange">#FF9800</color>
+    <color name="yellow">#FFEB3B</color>
+
+    <!-- Grade Colors -->
+    <color name="grade_a_plus">#4CAF50</color>
+    <color name="grade_a">#8BC34A</color>
+    <color name="grade_b">#FFC107</color>
+    <color name="grade_c">#FF9800</color>
+    <color name="grade_d">#F57C00</color>
+    <color name="grade_f">#F44336</color>
+
+    <!-- Background Colors -->
+    <color name="background">#F5F5F5</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="error">#B00020</color>
+
+    <!-- Text Colors -->
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="hint_text">#BDBDBD</color>
+</resources>
