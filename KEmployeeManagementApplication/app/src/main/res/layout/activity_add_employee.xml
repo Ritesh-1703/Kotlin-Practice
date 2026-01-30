@@ -70,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            app:prefixText="(+91)"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -85,6 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            app:prefixText="₹"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText

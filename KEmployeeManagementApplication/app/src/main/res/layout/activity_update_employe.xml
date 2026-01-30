@@ -1,10 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.employee.update.UpdateEmploye">
+    android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Employee"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Employee Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:errorEnabled="true"
+            app:helperText="Employee's full name"
+            app:helperTextTextColor="@color/gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmployeeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Employee Name"
+                android:maxLines="1"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Position -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:errorEnabled="true"
+            app:helperText="Job title/position"
+            app:helperTextTextColor="@color/gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPosition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Position"
+                android:maxLines="1"
+                android:inputType="text"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Department -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:errorEnabled="true"
+            app:helperText="Department/Team"
+            app:helperTextTextColor="@color/gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDepartment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Department"
+                android:maxLines="1"
+                android:inputType="text"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Email -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:errorEnabled="true"
+            app:helperText="Official email address"
+            app:helperTextTextColor="@color/gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Phone -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:errorEnabled="true"
+            app:prefixText="(+91)"
+            app:helperText="Contact number"
+            app:helperTextTextColor="@color/gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"
+                android:maxLines="1"
+                android:inputType="phone"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Salary -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:errorEnabled="true"
+            app:helperText="Monthly salary"
+            app:helperTextTextColor="@color/gray"
+            app:prefixText="₹"
+            app:prefixTextColor="@color/gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSalary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Salary"
+                android:maxLines="1"
+                android:inputType="numberDecimal"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Status/Active Checkbox -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical">
+
+            <CheckBox
+                android:id="@+id/cbIsActive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Active Employee"
+                android:textSize="16sp"
+                android:checked="true" />
+
+        </LinearLayout>
+
+<!--        &lt;!&ndash; Hire Date (Optional) &ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:gravity="center_vertical">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Hire Date: "-->
+<!--                android:textSize="16sp"-->
+<!--                android:layout_marginEnd="8dp" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btnSelectDate"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Select Date"-->
+<!--                android:textAllCaps="false"-->
+<!--                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvSelectedDate"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Not selected"-->
+<!--                android:textSize="16sp"-->
+<!--                android:layout_marginStart="12dp" />-->
+
+<!--        </LinearLayout>-->
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            android:weightSum="2">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button"
+                android:src="@android:drawable/ic_menu_revert"
+                android:backgroundTint="@color/purple_700"
+                android:layout_marginEnd="8dp" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnUpdate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button"
+                android:src="@android:drawable/ic_menu_save"
+                android:backgroundTint="@color/green"
+                android:layout_marginEnd="8dp" />
+
+        </LinearLayout>
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</ScrollView>

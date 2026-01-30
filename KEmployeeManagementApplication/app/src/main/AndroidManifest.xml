@@ -15,7 +15,7 @@
             android:name=".ui.employee.details.EmpDetails"
             android:exported="false" />
         <activity
-            android:name=".ui.employee.update.UpdateEmploye"
+            android:name=".ui.employee.update.UpdateEmployee"
             android:exported="false" />
         <activity
             android:name=".ui.employee.add.AddEmployee"

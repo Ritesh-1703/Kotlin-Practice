@@ -19,8 +19,8 @@ interface AdminDao {
     @Delete
     suspend fun deleteAdmin(admin: AdminEntity)
 
-    @Query("SELECT * FROM admin_table WHERE username = :username")
-    suspend fun getAdminByUsername(username: String): AdminEntity?
+    @Query("SELECT * FROM admin_table WHERE email = :email")
+    suspend fun getAdminByUsername(email: String): AdminEntity?
 
 
 }

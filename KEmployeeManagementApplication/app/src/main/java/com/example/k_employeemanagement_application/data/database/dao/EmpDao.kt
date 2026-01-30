@@ -23,6 +23,8 @@ interface EmpDao {
     @Query("SELECT * FROM employee_table ORDER BY name ASC")
      fun getAllEmp(): LiveData<List<EmpEntity>>
 
+    @Query("SELECT * FROM employee_table WHERE id = :id")
+    suspend fun getEmpById(id: Int): EmpEntity?
 
 
 }

@@ -169,6 +169,7 @@
             style="@style/Widget.MaterialComponents.Button"
             android:src="@android:drawable/ic_menu_revert"
             android:layout_width="50sp"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
