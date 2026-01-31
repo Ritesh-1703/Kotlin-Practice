@@ -1,233 +1,412 @@
-UNIT – I : INTRODUCTION TO ANDROID & KOTLIN
-1. Android Overview
+📘 ANDROID APPLICATION DEVELOPMENT
+(Using Kotlin) – DETAILED SYLLABUS
+📖 CHAPTER 1: INTRODUCTION TO ANDROID
 
-1.1 Evolution of Android
-1.2 Android features
-1.3 Android architecture
-   • Linux Kernel
-   • Hardware Abstraction Layer (HAL)
-   • Android Runtime (ART)
-   • Native Libraries
-   • Application Framework
-   • Applications
-1.4 Android versions & API levels
-1.5 Android ecosystem
-1.6 Android application types
+Introduction to mobile application development
 
-2. Introduction to Kotlin
+History and evolution of Android
 
-2.1 History of Kotlin
-2.2 Advantages of Kotlin over Java
-2.3 Kotlin features
-2.4 Kotlin compilation process
-2.5 Kotlin & Android relationship
-2.6 Setting up Kotlin in Android Studio
+Android OS architecture
 
-UNIT – II : KOTLIN PROGRAMMING FUNDAMENTALS
-3. Kotlin Basics
+Linux Kernel
 
-3.1 Structure of a Kotlin program
-3.2 main() function
-3.3 Keywords & identifiers
-3.4 Comments
-3.5 Input & output
+HAL
 
-4. Variables & Data Types
+Android Runtime (ART)
 
-4.1 val and var
-4.2 Type inference
-4.3 Primitive data types
-   • Int, Long, Float, Double
-   • Char, Boolean
-4.4 String handling
-4.5 Nullable & non-nullable types
-4.6 Type casting
+Native Libraries
 
-5. Operators & Control Statements
+Application Framework
 
-5.1 Arithmetic operators
-5.2 Relational operators
-5.3 Logical operators
-5.4 Assignment operators
-5.5 Conditional statements
-   • if
-   • if-else
-   • when
-5.6 Looping statements
-   • for
-   • while
-   • do-while
-5.7 Jump statements
+Android versions and API levels
 
-UNIT – III : FUNCTIONS, ARRAYS & COLLECTIONS
-6. Functions in Kotlin
+Android application components overview
 
-6.1 Function declaration
-6.2 Function parameters
-6.3 Return types
-6.4 Default arguments
-6.5 Named arguments
-6.6 Lambda expressions
+Android development ecosystem
 
-7. Arrays & Collections
+📖 CHAPTER 2: ANDROID STUDIO & PROJECT SETUP
 
-7.1 Arrays
-7.2 Immutable collections
-7.3 Mutable collections
-7.4 List, Set, Map
-7.5 Collection traversal
-7.6 Collection utility functions
+Android Studio installation
 
-UNIT – IV : ANDROID APPLICATION COMPONENTS
-8. Android Application Structure
+Android SDK and SDK Manager
 
-8.1 AndroidManifest.xml
-8.2 Gradle build system
-8.3 Project directory structure
-8.4 Resource files
-8.5 R.java / ViewBinding
+AVD (Android Virtual Device)
 
-9. Activities
+Creating first Android project
 
-9.1 Activity lifecycle
-9.2 Creating an activity
-9.3 Launching activities
-9.4 Intent types
-9.5 Passing data using intents
-9.6 Activity stack
+Android project structure
 
-10. Fragments
+Gradle build system
 
-10.1 Fragment lifecycle
-10.2 Fragment creation
-10.3 Fragment transactions
-10.4 Fragment communication
-10.5 Fragment vs Activity
+build.gradle (project vs module)
 
-UNIT – V : USER INTERFACE DESIGN
-11. Layouts & Views
+Manifest file overview
 
-11.1 Layout types
-   • LinearLayout
-   • RelativeLayout
-   • ConstraintLayout
-11.2 Views
-   • TextView
-   • EditText
-   • Button
-   • ImageView
-11.3 UI attributes
-11.4 Event handling
+Resource folders overview
 
-12. RecyclerView
+📖 CHAPTER 3: KOTLIN PROGRAMMING FUNDAMENTALS
 
-12.1 RecyclerView architecture
-12.2 Adapter & ViewHolder
-12.3 LayoutManagers
-12.4 Item click handling
-12.5 DiffUtil
+Introduction to Kotlin
 
-UNIT – VI : DATA STORAGE & NETWORKING
-13. Data Storage
+Kotlin vs Java
 
-13.1 SharedPreferences
-13.2 Internal storage
-13.3 External storage
-13.4 SQLite database
-13.5 Room persistence library
+Variables (val, var)
 
-14. Networking
+Data types
 
-14.1 Internet permissions
-14.2 RESTful web services
-14.3 HTTP methods
-14.4 Retrofit
-14.5 JSON parsing
-14.6 Error handling
+Type inference
 
-UNIT – VII : ANDROID ARCHITECTURE & COROUTINES
-15. Android Architecture Components
+Operators
 
-15.1 MVC, MVP, MVVM
-15.2 ViewModel
-15.3 LiveData
-15.4 ViewBinding & DataBinding
-15.5 Clean Architecture
+Control statements
 
-16. Kotlin Coroutines
+if / else
 
-16.1 Introduction to coroutines
-16.2 Coroutine scopes
-16.3 Dispatchers
-16.4 suspend functions
-16.5 Exception handling
+when
 
-UNIT – VIII : MODERN ANDROID DEVELOPMENT
-17. Jetpack Compose
+loops (for, while)
 
-17.1 Compose fundamentals
-17.2 Composable functions
-17.3 State management
-17.4 Layouts in Compose
-17.5 Navigation in Compose
+Functions
 
-18. Dependency Injection
+Default and named parameters
 
-18.1 Dependency Injection concepts
-18.2 Hilt
-18.3 ViewModel injection
-18.4 Best practices
+📖 CHAPTER 4: OBJECT-ORIENTED PROGRAMMING IN KOTLIN
 
-UNIT – IX : TESTING, SECURITY & DEPLOYMENT
-19. Testing
+Classes and objects
 
-19.1 Unit testing
-19.2 UI testing
-19.3 Espresso
-19.4 Mocking
+Constructors (primary & secondary)
 
-20. Security & Permissions
+Inheritance
 
-20.1 Runtime permissions
-20.2 Secure data storage
-20.3 Biometric authentication
+Method overriding
 
-21. App Publishing
+Abstract classes
 
-21.1 App signing
-21.2 Build variants
-21.3 Play Store deployment
-21.4 App updates & maintenance
+Interfaces
 
-UNIT – X : ADVANCED & PROFESSIONAL TOPICS
-22. Firebase
+Encapsulation
 
-22.1 Authentication
-22.2 Firestore
-22.3 Cloud messaging
-22.4 Analytics
+Data classes
 
-23. Performance Optimization
+Sealed classes
 
-23.1 Memory management
-23.2 Leak detection
-23.3 App startup optimization
+Enum classes
 
-24. Mini & Major Projects
+📖 CHAPTER 5: ADVANCED KOTLIN CONCEPTS
 
-24.1 Problem identification
-24.2 Requirement analysis
-24.3 Design & implementation
-24.4 Testing
-24.5 Documentation
+Null safety
 
-📚 TEXTBOOK & REFERENCES
+Safe calls and Elvis operator
 
-Android Programming with Kotlin
+Lateinit and lazy
 
-Head First Android Development
+Scope functions
 
-Official Android Documentation
+let
+
+apply
+
+also
+
+run
+
+with
+
+Collections in Kotlin
+
+Lambdas
+
+Higher-order functions
+
+📖 CHAPTER 6: ANDROID ACTIVITY & LIFECYCLE
+
+Activity lifecycle
+
+Lifecycle methods
+
+Launch modes
+
+Saving instance state
+
+Back stack management
+
+Context (Application vs Activity)
+
+📖 CHAPTER 7: USER INTERFACE DESIGN (XML)
+
+Android UI architecture
+
+Layouts:
+
+LinearLayout
+
+RelativeLayout
+
+ConstraintLayout
+
+FrameLayout
+
+Views:
+
+TextView
+
+EditText
+
+Button
+
+ImageView
+
+Styling and themes
+
+Custom styles
+
+Material Design basics
+
+📖 CHAPTER 8: USER INTERACTION & INPUT
+
+Event handling
+
+Click listeners
+
+Text input handling
+
+Form validation
+
+Toast and Snackbar
+
+Dialogs
+
+Bottom sheets
+
+📖 CHAPTER 9: INTENTS & NAVIGATION
+
+Explicit intents
+
+Implicit intents
+
+Passing data between activities
+
+Activity result APIs
+
+Navigation Component
+
+Fragments introduction
+
+📖 CHAPTER 10: FRAGMENTS & NAVIGATION COMPONENT
+
+Fragment lifecycle
+
+Fragment transactions
+
+Fragment communication
+
+Navigation graph
+
+Safe Args
+
+Single-Activity architecture
+
+📖 CHAPTER 11: LISTS & ADAPTERS
+
+RecyclerView
+
+ViewHolder pattern
+
+ListAdapter & DiffUtil
+
+GridLayoutManager
+
+Pagination basics
+
+Click handling in RecyclerView
+
+📖 CHAPTER 12: LOCAL DATA STORAGE
+
+SharedPreferences
+
+DataStore (Preferences & Proto)
+
+Internal & external storage
+
+File handling
+
+📖 CHAPTER 13: ROOM DATABASE (IMPORTANT)
+
+SQLite overview
+
+Room architecture
+
+Entity
+
+DAO
+
+Database class
+
+Queries
+
+Migrations
+
+Relationships (1-to-1, 1-to-many)
+
+Room with Coroutines
+
+📖 CHAPTER 14: ASYNCHRONOUS PROGRAMMING
+
+Threads and Handlers (intro)
+
+Coroutines
+
+suspend functions
+
+Coroutine scopes
+
+Dispatchers
+
+Error handling in coroutines
+
+Flow basics
+
+📖 CHAPTER 15: NETWORKING & API INTEGRATION
+
+REST API concepts
+
+HTTP methods
+
+Retrofit
+
+OkHttp
+
+JSON parsing (Gson / Moshi)
+
+API error handling
+
+Pagination
+
+📖 CHAPTER 16: ARCHITECTURE COMPONENTS
+
+ViewModel
+
+LiveData
+
+StateFlow
+
+DataBinding
+
+ViewBinding
+
+Lifecycle-aware components
+
+📖 CHAPTER 17: ANDROID APP ARCHITECTURE
+
+Separation of concerns
+
+Repository pattern
+
+MVVM architecture
+
+Clean architecture overview
+
+Dependency Injection
+
+Hilt / Dagger basics
+
+📖 CHAPTER 18: WORK MANAGER & BACKGROUND TASKS
+
+Background execution limits
+
+WorkManager
+
+One-time and periodic work
+
+Constraints
+
+Foreground services (intro)
+
+📖 CHAPTER 19: FIREBASE IN ANDROID
+
+Firebase setup
+
+Firebase Authentication
+
+Firestore database
+
+Firebase Cloud Messaging (FCM)
+
+Crashlytics
+
+App analytics
+
+📖 CHAPTER 20: PERFORMANCE & OPTIMIZATION
+
+Memory leaks
+
+LeakCanary
+
+App startup optimization
+
+RecyclerView performance
+
+ProGuard / R8
+
+Battery optimization
+
+📖 CHAPTER 21: TESTING & DEBUGGING
+
+Debugging tools
+
+Logcat
+
+Unit testing
+
+UI testing (Espresso)
+
+Mocking
+
+Handling crashes
+
+📖 CHAPTER 22: BUILD, RELEASE & PUBLISHING
+
+Build variants
+
+Signing configs
+
+APK vs AAB
+
+Versioning
+
+Play Store publishing
+
+App updates
+
+📖 CHAPTER 23: ADVANCED & EXPERT TOPICS
+
+Modularization
+
+Multi-module projects
+
+Dynamic feature modules
+
+Jetpack Compose (intro)
+
+Security best practices
+
+Reverse engineering protection
+
+Production bug fixing
+
+🎓 COURSE OUTCOMES
+
+After completing this syllabus, the learner will be able to:
+
+Develop full-fledged Android applications using Kotlin
+
+Use Room, Retrofit, ViewModel, and Coroutines
+
+Follow MVVM and Clean Architecture
+
+Build scalable, maintainable, production-ready Android apps
+
+Work confidently in internships and real-world projects
 
 
 
