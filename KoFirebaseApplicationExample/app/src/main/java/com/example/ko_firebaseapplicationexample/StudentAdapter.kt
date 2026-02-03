@@ -8,8 +8,11 @@ import com.example.ko_firebaseapplicationexample.databinding.ItemStudentBinding
 import com.example.ko_firebaseapplicationexample.model.Student
 
 
+
 class StudentAdapter(
-    private val list: List<Student>
+    private val list: List<Student>,
+    private val onEdit: (Student) -> Unit,
+    private val onDelete: (Student) -> Unit
 ): RecyclerView.Adapter<StudentAdapter.ViewHolder>() {
 
 
@@ -21,9 +24,15 @@ class StudentAdapter(
             parent,
             false
         )
+        val binding2= ItemStudentBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+
+
         return ViewHolder(binding)
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val stu = list[position]
@@ -33,6 +42,19 @@ class StudentAdapter(
         holder.binding.tvAge.text = list[position].age.toString()
         holder.binding.tvCourse.text = list[position].course
 
+        holder.binding.editButton.setOnClickListener {
+            val updated = stu.copy(
+                name =  stu.name ,
+                age = stu.age,
+                course = stu.course
+            )
+            onEdit(updated)
+
+        }
+
+        holder.binding.deleteButton.setOnClickListener {
+            onDelete(stu)
+        }
 
     }
 
