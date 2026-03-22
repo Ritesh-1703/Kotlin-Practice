@@ -66,6 +66,6 @@ fun ActionButton(){
 //Preview
  @Composable
 @Preview(showBackground = true)
-fun Prev (){
+fun Prev(){
     ProfileScreen("Rohit", 18, "India")
 }
