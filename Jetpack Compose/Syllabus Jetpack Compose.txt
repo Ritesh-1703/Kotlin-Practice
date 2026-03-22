@@ -1,6 +1,8 @@
 JETPACK COMPOSE SYLLABUS
 (Basic → Expert | University + Industry Level)
+
 📖 CHAPTER 1: INTRODUCTION TO JETPACK COMPOSE
+
 1.1 Android UI Evolution
 XML-based UI system
 Limitations of XML UI
@@ -13,6 +15,7 @@ Advantages over XML
 Composable functions
 Recomposition
 State-driven UI
+
 📖 CHAPTER 2: KOTLIN FOR COMPOSE (REQUIRED BASICS)
 2.1 Kotlin Refresher
 Variables and data types
@@ -22,6 +25,7 @@ Lambda expressions
 Higher-order functions
 Immutability
 State handling in Kotlin
+
 📖 CHAPTER 3: COMPOSABLE FUNCTIONS
 3.1 Basics
 @Composable annotation
@@ -35,6 +39,7 @@ Reusable composables
 Modifier concept
 Chaining modifiers
 Layout modifiers
+
 📖 CHAPTER 4: LAYOUTS IN COMPOSE
 4.1 Basic Layouts
 Column
