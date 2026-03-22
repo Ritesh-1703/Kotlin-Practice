@@ -1,0 +1,185 @@
+JETPACK COMPOSE SYLLABUS
+(Basic → Expert | University + Industry Level)
+📖 CHAPTER 1: INTRODUCTION TO JETPACK COMPOSE
+1.1 Android UI Evolution
+XML-based UI system
+Limitations of XML UI
+Need for declarative UI
+1.2 Introduction to Jetpack Compose
+What is Jetpack Compose
+Declarative UI concept
+Advantages over XML
+1.3 Compose Architecture
+Composable functions
+Recomposition
+State-driven UI
+📖 CHAPTER 2: KOTLIN FOR COMPOSE (REQUIRED BASICS)
+2.1 Kotlin Refresher
+Variables and data types
+Functions
+Lambda expressions
+2.2 Compose-specific Kotlin Concepts
+Higher-order functions
+Immutability
+State handling in Kotlin
+📖 CHAPTER 3: COMPOSABLE FUNCTIONS
+3.1 Basics
+@Composable annotation
+Function structure
+Preview annotation
+3.2 Composition
+Composable tree
+Nesting composables
+Reusable composables
+3.3 Modifiers
+Modifier concept
+Chaining modifiers
+Layout modifiers
+📖 CHAPTER 4: LAYOUTS IN COMPOSE
+4.1 Basic Layouts
+Column
+Row
+Box
+4.2 Advanced Layouts
+LazyColumn
+LazyRow
+Grid layouts
+4.3 Arrangement & Alignment
+Horizontal & vertical alignment
+Arrangement spacing
+📖 CHAPTER 5: UI COMPONENTS (MATERIAL DESIGN)
+5.1 Basic Components
+Text
+Button
+Icon
+Image
+5.2 Input Components
+TextField
+Checkbox
+Switch
+RadioButton
+5.3 Material3 Components
+Scaffold
+TopAppBar
+BottomNavigation
+📖 CHAPTER 6: STATE MANAGEMENT IN COMPOSE
+6.1 State Basics
+What is state
+State-driven UI
+6.2 State APIs
+remember
+mutableStateOf
+rememberSaveable
+6.3 State Hoisting
+Lifting state up
+Stateless vs stateful composables
+📖 CHAPTER 7: RECOMPOSITION & PERFORMANCE
+7.1 Recomposition
+What is recomposition
+When recomposition happens
+7.2 Optimization
+Avoid unnecessary recomposition
+Stable vs unstable types
+remember optimization
+📖 CHAPTER 8: NAVIGATION IN COMPOSE
+8.1 Navigation Basics
+Navigation Compose library
+8.2 Navigation Graph
+Routes
+Arguments passing
+8.3 Advanced Navigation
+Nested navigation
+Deep links
+📖 CHAPTER 9: THEMING & STYLING
+9.1 Material Theme
+Colors
+Typography
+Shapes
+9.2 Dark Mode
+Dynamic theming
+9.3 Custom Themes
+Custom design systems
+📖 CHAPTER 10: SIDE EFFECTS IN COMPOSE
+10.1 Side Effect APIs
+LaunchedEffect
+SideEffect
+DisposableEffect
+10.2 rememberCoroutineScope
+10.3 Derived state
+📖 CHAPTER 11: ANIMATIONS IN COMPOSE
+11.1 Basic Animations
+animate*AsState
+11.2 Advanced Animations
+AnimatedVisibility
+Crossfade
+11.3 Transition APIs
+updateTransition
+📖 CHAPTER 12: HANDLING USER INPUT
+12.1 Gestures
+Clickable
+Scrollable
+Drag gestures
+12.2 Focus & Keyboard
+FocusRequester
+Keyboard control
+📖 CHAPTER 13: LISTS & PERFORMANCE
+13.1 Lazy Lists
+LazyColumn optimization
+Item keys
+13.2 Paging
+Paging 3 integration
+📖 CHAPTER 14: INTEGRATION WITH VIEWMODEL
+14.1 ViewModel in Compose
+StateFlow / LiveData
+14.2 Collecting State
+collectAsState()
+14.3 Lifecycle awareness
+📖 CHAPTER 15: DATABASE INTEGRATION
+15.1 Room Database
+Entity
+DAO
+Flow with Room
+15.2 Offline-first architecture
+📖 CHAPTER 16: NETWORKING
+16.1 Retrofit with Compose
+16.2 Coroutines + Flow
+16.3 API state handling
+📖 CHAPTER 17: ARCHITECTURE PATTERNS
+17.1 MVVM with Compose
+17.2 Repository pattern
+17.3 Clean architecture
+📖 CHAPTER 18: DEPENDENCY INJECTION
+18.1 Hilt in Compose
+18.2 Injecting ViewModels
+18.3 Module setup
+📖 CHAPTER 19: TESTING IN COMPOSE
+19.1 UI Testing
+Compose testing APIs
+19.2 Unit Testing
+19.3 Integration testing
+📖 CHAPTER 20: PERFORMANCE & OPTIMIZATION
+20.1 Performance tools
+20.2 Avoiding recomposition issues
+20.3 Memory optimization
+📖 CHAPTER 21: INTEROPERABILITY
+21.1 Compose with XML
+21.2 Embedding Compose in Views
+21.3 Migration strategies
+📖 CHAPTER 22: ADVANCED TOPICS
+22.1 Custom layouts
+22.2 Custom modifiers
+22.3 Canvas & drawing
+📖 CHAPTER 23: EXPERT LEVEL
+23.1 Large-scale apps
+23.2 Performance profiling
+23.3 Debugging production issues
+23.4 Code review practices
+🎓 FINAL OUTCOMES
+
+After completing this syllabus, you will be able to:
+
+Build modern Android apps using Jetpack Compose
+Replace XML completely with Compose
+Implement MVVM + Clean Architecture
+Optimize UI performance
+Work in production-level Android projects
