@@ -5,6 +5,17 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
+private val LightColorScheme = lightColorScheme(
+    primary = Color(0xFF6200EE),
+    secondary = Color(0xFF03DAC6),
+    tertiary = Color(0xFF3700B3),
+    background = Color(0xFFFFFBFE),
+    surface = Color(0xFFFFFBFE),
+    primaryContainer = Color(0xFFEADDFF),
+    secondaryContainer = Color(0xFFE8F0FE)
+)
+
+
 private val DarkColorScheme = darkColorScheme(
     primary = Color(0xFFBB86FC),
     secondary = Color(0xFF03DAC6),
@@ -15,15 +26,6 @@ private val DarkColorScheme = darkColorScheme(
     secondaryContainer = Color(0xFF03DAC6).copy(alpha = 0.1f)
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF6200EE),
-    secondary = Color(0xFF03DAC6),
-    tertiary = Color(0xFF3700B3),
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    primaryContainer = Color(0xFFEADDFF),
-    secondaryContainer = Color(0xFFE8F0FE)
-)
 
 @Composable
 fun TaskAppTheme(
