@@ -4,6 +4,8 @@ import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -464,7 +466,9 @@ fun QuickAccessSection(items: List<DashboardItem>) {
 
 @Composable
 fun DashboardCard(item: DashboardItem) {
-    var isPressed by remember { mutableStateOf(false) }
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+
     val scale by animateFloatAsState(
         targetValue = if (isPressed) 0.95f else 1f,
         animationSpec = spring(
@@ -479,10 +483,18 @@ fun DashboardCard(item: DashboardItem) {
             .scale(scale)
             .aspectRatio(1f)
             .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null // Remove default ripple
+                interactionSource = interactionSource,
+                indication = null // Remove default ripple for custom animation
             ) {
-                // Handle click
+                // Handle click - navigate to appropriate screen
+                when (item.title) {
+                    "Profile" -> { /* Navigate to Profile */ }
+                    "Settings" -> { /* Navigate to Settings */ }
+                    "Premium" -> { /* Navigate to Premium */ }
+                    "Account" -> { /* Navigate to Account */ }
+                    "Projects" -> { /* Navigate to Projects */ }
+                    "Tasks" -> { /* Navigate to Tasks */ }
+                }
             },
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(
